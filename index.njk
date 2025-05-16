@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>☀️ Juhiksen jäätelökesä</title>
+
+    <style>
+      main {
+        padding-left: 2em;
+      }
+
+      h1 {
+        text-align: center;
+        font-family: "Open Sans";
+        text-transform: uppercase;
+      }
+
+      .center {
+        text-align: center;
+      }
+      .gallery {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      figure {
+        max-width: 400px;
+        border: 1px solid black;
+        border-radius: 5px;
+
+        & h2 {
+          margin-top: 0em;
+        }
+
+        & img {
+          max-width: 100%;
+        }
+
+        & figcaption {
+          padding: 1em;
+        }
+
+        & .date {
+          font-weight: 700;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>☀️ Juhiksen jäätelökesä, 2025 🍦</h1>
+
+      <p class="center">
+        Uuden työpaikan toimiston edessä on jätskikiska. Ajattelin käydä läpi
+        sen valikoiman tämän kesän aikana.
+      </p>
+
+      <div class="gallery">
+        {% for photo in photos %}
+        <figure>
+          <img src="/assets/img/{{ photo.filename }}" alt="{{ photo.alt }}" />
+          <figcaption>
+            <h2>{{ photo.title }}</h2>
+            <span class="date">{{ photo.date | format_date }}</span>
+            {{ photo.caption | paragraphize | safe }}
+          </figcaption>
+        </figure>
+        {% endfor %}
+      </div>
+    </main>
+  </body>
+</html>
