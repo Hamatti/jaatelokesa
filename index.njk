@@ -6,10 +6,6 @@
     <title>☀️ Juhiksen jäätelökesä</title>
 
     <style>
-      main {
-        padding-left: 2em;
-      }
-
       h1 {
         text-align: center;
         font-family: "Open Sans";
@@ -23,8 +19,8 @@
         display: flex;
         flex-wrap: wrap;
       }
+
       figure {
-        max-width: 400px;
         border: 1px solid black;
         border-radius: 5px;
 
@@ -42,6 +38,16 @@
 
         & .date {
           font-weight: 700;
+        }
+      }
+
+      @media screen and (min-width: 500px) {
+        main {
+          padding: 0 2em;
+        }
+
+        figure {
+          max-width: 400px;
         }
       }
     </style>
