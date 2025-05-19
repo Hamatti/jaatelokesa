@@ -17,20 +17,17 @@ eleventyImport:
   </author>
   {%- for photo in photos %}
   <entry>
-    <title>{{ photo.data.date }}</title>
+    <title>Jäätelöpäivä {{ photo.date | format_date}}</title>
     <link href="https://jaatelokesa.hamatti.org/#{{photo.date }}" />
-    <updated>{{ photo.data.date }}</updated>
+    <updated>{{ photo.date }}</updated>
     <id>https://jaatelokesa.hamatti.org/#{{photo.date }}</id>
     <content type="html">
-        <figure>
-          <img src="https://jaatelokesa.hamatti.org/assets/img/{{ photo.filename }}" alt="{{ photo.alt }}" />
-          <figcaption>
-            <h2>{{ photo.title }}</h2>
-            <span class="date">{{ photo.date | format_date }}</span>
-            {{ photo.caption | paragraphize | safe }}
-          </figcaption>
-        </figure>
-
+    <div>
+        <img src="https://jaatelokesa.hamatti.org/assets/img/{{ photo.filename }}" alt="{{ photo.alt }}" />
+        <h2>{{ photo.title }}</h2>
+        <span class="date">{{ photo.date | format_date }}</span>
+        {{ photo.caption | paragraphize | safe }}
+    </div>
     </content>
   </entry>
   {%- endfor %}
