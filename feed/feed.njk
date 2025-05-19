@@ -1,0 +1,37 @@
+---
+permalink: feed/feed.xml
+excludeFromSitemap: true
+eleventyImport:
+  collections: ["photos"]
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Juhiksen jäätelökesä</title>
+  <subtitle>Maistellaan läpi lähijätskikiskan koko tarjonta</subtitle>
+  <link href="https://jaatelokesa.hamatti.org/feed/feed.xml" rel="self" />
+  <link href="https://jaatelokesa.hamatti.org/" />
+  <updated>{{ collections.photos | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
+  <id>jaatelokesa.hamatti.org</id>
+  <author>
+    <name>Juha-Matti Santala</name>
+  </author>
+  {%- for photo in photos %}
+  <entry>
+    <title>{{ photo.data.date }}</title>
+    <link href="https://jaatelokesa.hamatti.org/#{{photo.date }}" />
+    <updated>{{ photo.data.date }}</updated>
+    <id>https://jaatelokesa.hamatti.org/#{{photo.date }}</id>
+    <content type="html">
+        <figure>
+          <img src="https://jaatelokesa.hamatti.org/assets/img/{{ photo.filename }}" alt="{{ photo.alt }}" />
+          <figcaption>
+            <h2>{{ photo.title }}</h2>
+            <span class="date">{{ photo.date | format_date }}</span>
+            {{ photo.caption | paragraphize | safe }}
+          </figcaption>
+        </figure>
+
+    </content>
+  </entry>
+  {%- endfor %}
+</feed>

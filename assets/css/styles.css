@@ -1,0 +1,48 @@
+h1 {
+  text-align: center;
+  font-family: "Open Sans";
+  text-transform: uppercase;
+}
+
+.center {
+  text-align: center;
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+figure {
+  border: 1px solid black;
+  border-radius: 5px;
+
+  & h2 {
+    margin-top: 0em;
+  }
+
+  & img {
+    max-width: 100%;
+  }
+
+  & figcaption {
+    padding: 1em;
+  }
+
+  & .date {
+    font-weight: 700;
+  }
+}
+
+body:has(:target) figure:not(:has(:target)) {
+  filter: grayscale(100%);
+}
+
+@media screen and (min-width: 500px) {
+  main {
+    padding: 0 2em;
+  }
+
+  figure {
+    max-width: 400px;
+  }
+}

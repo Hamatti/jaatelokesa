@@ -5,52 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>☀️ Juhiksen jäätelökesä</title>
 
-    <style>
-      h1 {
-        text-align: center;
-        font-family: "Open Sans";
-        text-transform: uppercase;
-      }
-
-      .center {
-        text-align: center;
-      }
-      .gallery {
-        display: flex;
-        flex-wrap: wrap;
-      }
-
-      figure {
-        border: 1px solid black;
-        border-radius: 5px;
-
-        & h2 {
-          margin-top: 0em;
-        }
-
-        & img {
-          max-width: 100%;
-        }
-
-        & figcaption {
-          padding: 1em;
-        }
-
-        & .date {
-          font-weight: 700;
-        }
-      }
-
-      @media screen and (min-width: 500px) {
-        main {
-          padding: 0 2em;
-        }
-
-        figure {
-          max-width: 400px;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="/assets/css/styles.css" />
   </head>
   <body>
     <main>
@@ -61,12 +16,16 @@
         sen valikoiman tämän kesän aikana.
       </p>
 
+      <p class="center">
+        <a href="/feed/feed.xml">Seuraa jäätelökesää RSS-lukijalla.</a>
+      </p>
+
       <div class="gallery">
         {% for photo in photos %}
         <figure>
           <img src="/assets/img/{{ photo.filename }}" alt="{{ photo.alt }}" />
           <figcaption>
-            <h2>{{ photo.title }}</h2>
+            <h2 id="{{ photo.date }}">{{ photo.title }}</h2>
             <span class="date">{{ photo.date | format_date }}</span>
             {{ photo.caption | paragraphize | safe }}
           </figcaption>

@@ -1,3 +1,5 @@
+import pluginRss from "@11ty/eleventy-plugin-rss";
+
 export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("assets");
 
@@ -11,4 +13,6 @@ export default function (eleventyConfig) {
 
     return `<p>${paragraphs.join("</p><p>")}</p>`;
   });
+
+  eleventyConfig.addPlugin(pluginRss);
 }
