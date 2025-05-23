@@ -43,6 +43,6 @@ body:has(:target) figure:not(:has(:target)) {
   }
 
   figure {
-    max-width: 400px;
+    max-width: 350px;
   }
 }
